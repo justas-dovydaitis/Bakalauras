@@ -1,95 +1,95 @@
-#include "BikeControlls.h"
+#include "BikeControls.h"
 
-BikeControlls::BikeControlls(BikeStrategy *strategy = nullptr) : strategy_(strategy)
+BikeControls::BikeControls(BikeStrategy *strategy = nullptr) : strategy_(strategy)
 {
 }
-BikeControlls::~BikeControlls()
+BikeControls::~BikeControls()
 {
     delete this->strategy_;
 }
-void BikeControlls::setStrategy(BikeStrategy *strategy)
+void BikeControls::setStrategy(BikeStrategy *strategy)
 {
     delete this->strategy_;
     this->strategy_ = strategy;
 }
 
-void BikeControlls::LockBike() const
+void BikeControls::LockBike()
 {
     return this->strategy_->LockBike();
 }
-void BikeControlls::UnlockBike() const
+void BikeControls::UnlockBike()
 {
     return this->strategy_->UnlockBike();
 }
-void BikeControlls::TurnOnStarter() const
+void BikeControls::TurnOnStarter()
 {
     return this->strategy_->TurnOnStarter();
 }
-void BikeControlls::TurnOffStarter() const
+void BikeControls::TurnOffStarter()
 {
     return this->strategy_->TurnOffStarter();
 }
-void BikeControlls::TurnOffBike() const
+void BikeControls::TurnOffBike()
 {
     return this->strategy_->TurnOffBike();
 }
-void BikeControlls::TurnOnHeadlight() const
+void BikeControls::TurnOnHeadlight()
 {
     return this->strategy_->TurnOnHeadlight();
 }
-void BikeControlls::TurnOffHeadlight() const
+void BikeControls::TurnOffHeadlight()
 {
     return this->strategy_->TurnOffHeadlight();
 }
-void BikeControlls::TurnOnHighBeam() const
+void BikeControls::TurnOnHighBeam()
 {
     return this->strategy_->TurnOnHighBeam();
 }
-void BikeControlls::TurnOffHighBeam() const
+void BikeControls::TurnOffHighBeam()
 {
     return this->strategy_->TurnOffHighBeam();
 }
-void BikeControlls::TurnOnMarkers() const
+void BikeControls::TurnOnMarkers()
 {
     return this->strategy_->TurnOnMarkers();
 }
-void BikeControlls::TurnOffMarkers() const
+void BikeControls::TurnOffMarkers()
 {
     return this->strategy_->TurnOffMarkers();
 }
-void BikeControlls::TurnOnHorn() const
+void BikeControls::TurnOnHorn()
 {
     return this->strategy_->TurnOnHorn();
 }
-void BikeControlls::TurnOffHorn() const
+void BikeControls::TurnOffHorn()
 {
     return this->strategy_->TurnOffHorn();
 }
-void BikeControlls::TurnOnBrakes() const
+void BikeControls::TurnOnBrakes()
 {
     return this->strategy_->TurnOnBrakes();
 }
-void BikeControlls::TurnOffBrakes() const
+void BikeControls::TurnOffBrakes()
 {
     return this->strategy_->TurnOffBrakes();
 }
-void BikeControlls::TurnOnHazard() const
+void BikeControls::TurnOnHazard()
 {
     return this->strategy_->TurnOnHazard();
 }
-void BikeControlls::TurnOffHazard() const
+void BikeControls::TurnOffHazard()
 {
     return this->strategy_->TrunOffHazard();
 }
-void BikeControlls::TurnOnLeftTurn() const
+void BikeControls::TurnOnLeftTurn()
 {
     return this->strategy_->TurnOnLeftTurn();
 }
-void BikeControlls::TurnOnRightTurn() const
+void BikeControls::TurnOnRightTurn()
 {
     return this->strategy_->TurnOnRightTurn();
 }
-void BikeControlls::TurnOffTurns() const
+void BikeControls::TurnOffTurns()
 {
     return this->strategy_->TurnOffTurns();
 }

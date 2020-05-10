@@ -1,58 +1,57 @@
 
 void handleBTControls(int command)
 {
-    Serial.println("Handler has " + String(command));
+    // Serial.println("Handler has " + String(command));
 
     switch (command)
     {
-    case 0:
-        Serial.println("ON IGNITION");
-        xTaskCreate(TaskIgnition, "Ignition", 128, NULL, 1, NULL);
+    case IGNITION:
+
         break;
     case IGNITION_OFF:
-        xTaskCreate(TaskIgnitionOff, "Ignition off", 128, NULL, 1, NULL);
+        controls->TurnOffBike();
         break;
     case STARTER:
-        xTaskCreate(TaskStarter, "Starter", 128, NULL, 1, NULL);
+        controls->TurnOnStarter();
         break;
     case STARTER_OFF:
-        xTaskCreate(TaskStarterOff, "Starter off", 128, NULL, 1, NULL);
+        controls->TurnOffStarter();
         break;
     case LEFT_TURN:
-        xTaskCreate(TaskLTurn, "LTurn", 128, NULL, 1, NULL);
+        controls->TurnOnLeftTurn();
         break;
     case RIGHT_TURN:
-        xTaskCreate(TaskRTurn, "RTurn", 128, NULL, 1, NULL);
+        controls->TurnOnRightTurn();
         break;
     case HAZARD:
-        xTaskCreate(TaskHazard, "Hazzard", 128, NULL, 1, NULL);
+        controls->TurnOnHazard();
         break;
     case TURNS_OFF:
-        xTaskCreate(TaskTurnsOff, "Turns off", 128, NULL, 1, NULL);
+        controls->TurnOffTurns();
         break;
     case HEADLIGHT:
-        xTaskCreate(TaskHeadlight, "Headlight", 128, NULL, 1, NULL);
+        controls->TurnOnHeadlight();
         break;
     case HEADLIGHT_OFF:
-        xTaskCreate(TaskHeadlightOff, "Headlight off", 128, NULL, 1, NULL);
+        controls->TurnOffHeadlight();
         break;
     case HIGH_BEAM:
-        xTaskCreate(TaskHighBeam, "High beam", 128, NULL, 1, NULL);
+        controls->TurnOnHighBeam();
         break;
     case HIGH_BEAM_OFF:
-        xTaskCreate(TaskHighBeamOff, "High beam off", 128, NULL, 1, NULL);
+        controls->TurnOffHighBeam();
         break;
     case MARKERS:
-        xTaskCreate(TaskMarkers, "Markers", 128, NULL, 1, NULL);
+        controls->TurnOnMarkers();
         break;
     case MARKERS_OFF:
-        xTaskCreate(TaskMarkersOff, "Markers off", 128, NULL, 1, NULL);
+        controls->TurnOffMarkers();
         break;
     case HORN:
-        xTaskCreate(TaskHorn, "Horn", 128, NULL, 1, NULL);
+        controls->TurnOnHorn();
         break;
     case HORN_OFF:
-        xTaskCreate(TaskHornOff, "Horn off", 128, NULL, 1, NULL);
+        controls->TurnOffHorn();
         break;
     }
 };

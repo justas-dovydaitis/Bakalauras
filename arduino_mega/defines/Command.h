@@ -1,5 +1,5 @@
-#ifndef BT_COMMAND_H
-#define BT_COMMAND_H
+#ifndef COMMAND_H
+#define COMMAND_H
 
 typedef enum
 {
@@ -18,9 +18,10 @@ typedef enum
     MARKERS,
     MARKERS_OFF,
     HORN,
-    HORN_OFF
-} BTCommand;
+    HORN_OFF,
+    LOCK
+} Command;
 
-extern BTCommand cmd;
+extern Command cmd;
 
 #endif

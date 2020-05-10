@@ -7,14 +7,14 @@
 #include "RestingBikeStrategy.h"
 #include "RunningBikeStrategy.h"
 
-class BikeControlls
+class BikeControls
 {
 private:
     BikeStrategy *strategy_;
 
 public:
-    BikeControlls(BikeStrategy *strategy = nullptr) : strategy_(strategy){};
-    ~BikeControlls();
+    BikeControls(BikeStrategy *strategy = nullptr) : strategy_(strategy){};
+    ~BikeControls();
     void setStrategy(BikeStrategy *strategy);
     void LockBike() const;
     void UnlockBike() const;
@@ -22,13 +22,14 @@ public:
     void TurnOffStarter() const;
     void TurnOffBike() const;
     void TurnOnHeadlight() const;
+    void TurnOffHeadlight() const;
     void TurnOnHighBeam() const;
     void TurnOffHighBeam() const;
     void TurnOnMarkers() const;
     void TurnOffMarkers() const;
     void TurnOnHorn() const;
     void TurnOffHorn() const;
-    void TurnOnBrakes() const;
+    void TurnOnBrakes();
     void TurnOffBrakes() const;
     void TurnOnHazard() const;
     void TurnOffHazard() const;
