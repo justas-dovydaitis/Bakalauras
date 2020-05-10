@@ -1,15 +1,6 @@
 void TaskIgnition(void *pvParameters)
 {
-    Serial.println("TAsk ignition");
-    while (1)
-    {
-        Serial.println("TAsk ignition loop");
-        digitalWrite(GPIO_OUT_IGNITION, RELAY_OPEN);
-        vTaskDelay(200 / portTICK_PERIOD_MS);
-
-        digitalWrite(GPIO_OUT_IGNITION, RELAY_CLOSED);
-        vTaskDelay(200 / portTICK_PERIOD_MS);
-    }
+    digitalWrite(GPIO_OUT_IGNITION, RELAY_OPEN);
 }
 void TaskIgnitionOff(void *pvParameters)
 {
@@ -25,12 +16,27 @@ void TaskStarterOff(void *pvParameters)
 }
 void TaskLTurn(void *pvParameters)
 {
+    digitalWrite(GPIO_OUT_LEFT_TURN, RELAY_OPEN);
+    vTaskDelay(500 / portTICK_PERIOD_MS);
+    digitalWrite(GPIO_OUT_LEFT_TURN, RELAY_CLOSED);
+    vTaskDelay(500 / portTICK_PERIOD_MS);
 }
 void TaskRTurn(void *pvParameters)
 {
+    while (1)
+    {
+        digitalWrite(GPIO_OUT_RIGHT_TURN, RELAY_OPEN);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
+        digitalWrite(GPIO_OUT_RIGHT_TURN, RELAY_CLOSED);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
+    }
 }
 void TaskHazard(void *pvParameters)
 {
+    digitalWrite(GPIO_OUT_RIGHT_TURN, RELAY_OPEN);
+    vTaskDelay(500 / portTICK_PERIOD_MS);
+    digitalWrite(GPIO_OUT_RIGHT_TURN, RELAY_CLOSED);
+    vTaskDelay(500 / portTICK_PERIOD_MS);
 }
 void TaskTurnsOff(void *pvParameters)
 {
@@ -53,6 +59,12 @@ void TaskMarkers(void *pvParameters)
 void TaskMarkersOff(void *pvParameters)
 {
 }
+void TaskBrakes(void *pvParameters)
+{
+}
+void TaskBrakesOff(void *pvParameters)
+{
+}
 void TaskHorn(void *pvParameters)
 {
 }
@@ -69,24 +81,6 @@ void TaskBlinkAndBeep(void *pvParameters)
     vTaskDelay(100 / portTICK_PERIOD_MS);
     digitalWrite(GPIO_OUT_LEFT_TURN, RELAY_CLOSED);
     digitalWrite(GPIO_OUT_RIGHT_TURN, RELAY_CLOSED);
-
-    vTaskDelete(NULL);
-}
-void TaskSignalisation(void *pvParameters)
-{
-    digitalWrite(GPIO_OUT_LEFT_TURN, RELAY_OPEN);
-    digitalWrite(GPIO_OUT_RIGHT_TURN, RELAY_OPEN);
-    digitalWrite(GPIO_OUT_HEADLIGHT, RELAY_OPEN);
-    digitalWrite(GPIO_OUT_MARKER, RELAY_OPEN);
-    digitalWrite(GPIO_OUT_HORN, RELAY_OPEN);
-
-    vTaskDelay(400 / portTICK_PERIOD_MS);
-    
-    digitalWrite(GPIO_OUT_LEFT_TURN, RELAY_CLOSED);
-    digitalWrite(GPIO_OUT_RIGHT_TURN, RELAY_CLOSED);
-    digitalWrite(GPIO_OUT_HEADLIGHT, RELAY_CLOSED);
-    digitalWrite(GPIO_OUT_MARKER, RELAY_CLOSED);
-    digitalWrite(GPIO_OUT_HORN, RELAY_CLOSED);
 
     vTaskDelete(NULL);
 }

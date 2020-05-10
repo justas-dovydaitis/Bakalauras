@@ -3,6 +3,8 @@
         {
             "name": "Linux",
             "includePath": [
+                "/home/justas/Downloads/arduino-1.8.12/tools/**",
+                "/home/justas/Downloads/arduino-1.8.12/hardware/arduino/avr/**",
                 "${workspaceFolder}/**",
                 "~/Arduino/libraries/FreeRTOS/src/**"
             ],
@@ -10,7 +12,10 @@
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "clang-x64"
+            "intelliSenseMode": "clang-x64",
+            "forcedInclude": [
+                "/home/justas/Downloads/arduino-1.8.12/hardware/arduino/avr/cores/arduino/Arduino.h"
+            ]
         }
     ],
     "version": 4
