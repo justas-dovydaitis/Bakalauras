@@ -1,47 +1,80 @@
+
 #include <Arduino_FreeRTOS.h>
-#include <JsonParser.h>
+// #include <JsonParser.h>
+#include <TinyGPS++.h>
 
 #include "./defines/GPIOConf.h"
 #include "./defines/Command.h"
 
+#include "./BikeControls/Tasks.h"
 #include "./BikeControls/BikeControls.h"
+#include "./BikeControls/LockedBikeStrategy.h"
+#include "./BikeControls/RestingBikeStrategy.h"
+#include "./BikeControls/RunningBikeStrategy.h"
 
-static BikeControls *controls;
+
+
+float lat, lon;
+TinyGPSPlus gps; // create gps object
+
+void gpsSetup()
+{
+  Serial.println("The GPS Received Signal:");
+  Serial2.begin(115200); // connect gps sensor
+}
+
+void gpsLoop()
+{
+  while (Serial2.available())
+  {                             // check for gps data
+    gps.encode(Serial2.read()); // encode gps data
+
+    if (gps.location.isUpdated())
+    {
+      // gps.f_get_position(&lat, &lon); // get latitude and longitude
+
+      Serial.print("Position: ");
+
+      //Latitude
+      Serial.print("Latitude: ");
+      Serial.print(lat, 6);
+
+      Serial.print(",");
+
+      //Longitude
+      Serial.print("Longitude: ");
+      Serial.println(lon, 6);
+    }
+  }
+}
 
 void setup()
 {
   Serial.begin(115200);
   Serial1.begin(115200);
   configurePins();
-  controls = new BikeControls(new RunningBikeStrategy);
-  vTaskStartScheduler();
+  Serial.println("asdasdasdasd");
+
+  gpsSetup();
+
+  BIKE_CONTROLS = new BikeControls(new RunningBikeStrategy);
 }
 
 void loop()
 {
 }
+void serialEvent()
+{
+  String x = Serial.readStringUntil("\n");
 
+  Command command = LOCK;
+  handleBTControls(command);
+}
 void serialEvent1()
 {
-  if (Serial1.available() > 0)
-  {
-    String received = Serial1.readStringUntil('\n');
+  String x = Serial1.readStringUntil("\n");
+  Serial.println("serialEvent1 - " + x);
+  Command command = (Command)x.toInt();
 
-    Serial.println("Received: " + received);
-
-    char json[] = "{\"Name\":\"Blanchon\",\"Skills\":[\"C\",\"C++\",\"C#\"],\"Age\":32,\"Online\":true}";
-
-    JsonParser<32> parser;
-
-    JsonHashTable hashTable = parser.parseHashTable(json);
-
-    if (!hashTable.success())
-    {
-      return;
-    }
-
-    Command command = LOCK;
-
-    controls->TurnOnBrakes();
-  }
+  handleBTControls(command);
 }

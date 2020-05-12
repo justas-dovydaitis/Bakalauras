@@ -3,9 +3,9 @@
 
 #include "BikeStrategy.h"
 
-#include "LockedBikeStrategy.h"
-#include "RestingBikeStrategy.h"
-#include "RunningBikeStrategy.h"
+// #include "LockedBikeStrategy.h"
+// #include "RestingBikeStrategy.h"
+// #include "RunningBikeStrategy.h"
 
 class BikeControls
 {
@@ -14,28 +14,101 @@ private:
 
 public:
     BikeControls(BikeStrategy *strategy = nullptr) : strategy_(strategy){};
-    ~BikeControls();
-    void setStrategy(BikeStrategy *strategy);
-    void LockBike() const;
-    void UnlockBike() const;
-    void TurnOnStarter() const;
-    void TurnOffStarter() const;
-    void TurnOffBike() const;
-    void TurnOnHeadlight() const;
-    void TurnOffHeadlight() const;
-    void TurnOnHighBeam() const;
-    void TurnOffHighBeam() const;
-    void TurnOnMarkers() const;
-    void TurnOffMarkers() const;
-    void TurnOnHorn() const;
-    void TurnOffHorn() const;
-    void TurnOnBrakes();
-    void TurnOffBrakes() const;
-    void TurnOnHazard() const;
-    void TurnOffHazard() const;
-    void TurnOnLeftTurn() const;
-    void TurnOnRightTurn() const;
-    void TurnOffTurns() const;
-};
+    ~BikeControls()
+    {
+        delete this->strategy_;
+    }
+    void setStrategy(BikeStrategy *strategy)
+    {
+        delete this->strategy_;
+        this->strategy_ = strategy;
+    }
 
+    void TurnOnIgnition()
+    {
+        // Serial.println("WTF");
+        this->strategy_->TurnOnIgnition();
+    }
+    void LockBike()
+    {
+        this->strategy_->LockBike();
+    }
+    void UnlockBike()
+    {
+        this->strategy_->UnlockBike();
+    }
+    void TurnOnStarter()
+    {
+        this->strategy_->TurnOnStarter();
+    }
+    void TurnOffStarter()
+    {
+        this->strategy_->TurnOffStarter();
+    }
+    void TurnOffBike()
+    {
+        this->strategy_->TurnOffBike();
+    }
+    void TurnOnHeadlight()
+    {
+        this->strategy_->TurnOnHeadlight();
+    }
+    void TurnOffHeadlight()
+    {
+        this->strategy_->TurnOffHeadlight();
+    }
+    void TurnOnHighBeam()
+    {
+        this->strategy_->TurnOnHighBeam();
+    }
+    void TurnOffHighBeam()
+    {
+        this->strategy_->TurnOffHighBeam();
+    }
+    void TurnOnMarkers()
+    {
+        this->strategy_->TurnOnMarkers();
+    }
+    void TurnOffMarkers()
+    {
+        this->strategy_->TurnOffMarkers();
+    }
+    void TurnOnHorn()
+    {
+        this->strategy_->TurnOnHorn();
+    }
+    void TurnOffHorn()
+    {
+        this->strategy_->TurnOffHorn();
+    }
+    void TurnOnBrakes()
+    {
+        this->strategy_->TurnOnBrakes();
+    }
+    void TurnOffBrakes()
+    {
+        this->strategy_->TurnOffBrakes();
+    }
+    void TurnOnHazard()
+    {
+        this->strategy_->TurnOnHazard();
+    }
+    void TurnOffHazard()
+    {
+        this->strategy_->TurnOffHazard();
+    }
+    void TurnOnLeftTurn()
+    {
+        this->strategy_->TurnOnLeftTurn();
+    }
+    void TurnOnRightTurn()
+    {
+        this->strategy_->TurnOnRightTurn();
+    }
+    void TurnOffTurns()
+    {
+        this->strategy_->TurnOffTurns();
+    }
+};
+extern const BikeControls *BIKE_CONTROLS;
 #endif

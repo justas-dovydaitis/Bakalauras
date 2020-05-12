@@ -6,26 +6,27 @@
 class RestingBikeStrategy : public BikeStrategy
 {
 public:
-    void LockBike() override;
-    void UnlockBike() override;
-    void TurnOnStarter() override;
-    void TurnOffStarter() override;
-    void TurnOffBike() override;
-    void TurnOnHeadlight() override;
-    void TurnOffHeadlight() override;
-    void TurnOnHighBeam() override;
-    void TurnOffHighBeam() override;
-    void TurnOnMarkers() override;
-    void TurnOffMarkers() override;
-    void TurnOnHorn() override;
-    void TurnOffHorn() override;
-    void TurnOnBrakes() override;
-    void TurnOffBrakes() override;
-    void TurnOnHazard() override;
-    void TurnOffHazard() override;
-    void TurnOnLeftTurn() override;
-    void TurnOnRightTurn() override;
-    void TurnOffTurns() override;
+    void TurnOnIgnition();
+    void LockBike();
+    void UnlockBike();
+    void TurnOnStarter();
+    void TurnOffStarter();
+    void TurnOffBike();
+    void TurnOnHeadlight();
+    void TurnOffHeadlight();
+    void TurnOnHighBeam();
+    void TurnOffHighBeam();
+    void TurnOnMarkers();
+    void TurnOffMarkers();
+    void TurnOnHorn();
+    void TurnOffHorn();
+    void TurnOnBrakes();
+    void TurnOffBrakes();
+    void TurnOnHazard();
+    void TurnOffHazard();
+    void TurnOnLeftTurn();
+    void TurnOnRightTurn();
+    void TurnOffTurns();
 };
 
 #endif

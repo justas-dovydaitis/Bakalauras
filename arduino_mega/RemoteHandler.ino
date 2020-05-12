@@ -6,52 +6,56 @@ void handleBTControls(int command)
     switch (command)
     {
     case IGNITION:
-
+        Serial.println("ignition");
+        BIKE_CONTROLS->TurnOnIgnition();
         break;
     case IGNITION_OFF:
-        controls->TurnOffBike();
+
+        BIKE_CONTROLS->TurnOffBike();
         break;
     case STARTER:
-        controls->TurnOnStarter();
+        BIKE_CONTROLS->TurnOnStarter();
         break;
     case STARTER_OFF:
-        controls->TurnOffStarter();
+        BIKE_CONTROLS->TurnOffStarter();
         break;
     case LEFT_TURN:
-        controls->TurnOnLeftTurn();
+        BIKE_CONTROLS->TurnOnLeftTurn();
         break;
     case RIGHT_TURN:
-        controls->TurnOnRightTurn();
+        BIKE_CONTROLS->TurnOnRightTurn();
         break;
     case HAZARD:
-        controls->TurnOnHazard();
+        BIKE_CONTROLS->TurnOnHazard();
         break;
     case TURNS_OFF:
-        controls->TurnOffTurns();
+        BIKE_CONTROLS->TurnOffTurns();
         break;
     case HEADLIGHT:
-        controls->TurnOnHeadlight();
+        BIKE_CONTROLS->TurnOnHeadlight();
         break;
     case HEADLIGHT_OFF:
-        controls->TurnOffHeadlight();
+        BIKE_CONTROLS->TurnOffHeadlight();
         break;
     case HIGH_BEAM:
-        controls->TurnOnHighBeam();
+        BIKE_CONTROLS->TurnOnHighBeam();
         break;
     case HIGH_BEAM_OFF:
-        controls->TurnOffHighBeam();
+        BIKE_CONTROLS->TurnOffHighBeam();
         break;
     case MARKERS:
-        controls->TurnOnMarkers();
+        BIKE_CONTROLS->TurnOnMarkers();
         break;
     case MARKERS_OFF:
-        controls->TurnOffMarkers();
+        BIKE_CONTROLS->TurnOffMarkers();
         break;
     case HORN:
-        controls->TurnOnHorn();
+        BIKE_CONTROLS->TurnOnHorn();
         break;
     case HORN_OFF:
-        controls->TurnOffHorn();
+        BIKE_CONTROLS->TurnOffHorn();
         break;
+    case LOCK:
+        BIKE_CONTROLS->LockBike();
     }
 };

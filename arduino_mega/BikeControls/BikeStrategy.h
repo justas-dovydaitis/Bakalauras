@@ -6,26 +6,27 @@ class BikeStrategy
 public:
     virtual ~BikeStrategy() {}
 
-    virtual void LockBike() = 0;
-    virtual void UnlockBike() = 0;
-    virtual void TurnOnStarter() = 0;
-    virtual void TurnOffStarter() = 0;
-    virtual void TurnOffBike() = 0;
-    virtual void TurnOnHeadlight() = 0;
-    virtual void TurnOffHeadlight() = 0;
-    virtual void TurnOnHighBeam() = 0;
-    virtual void TurnOffHighBeam() = 0;
-    virtual void TurnOnMarkers() = 0;
-    virtual void TurnOffMarkers() = 0;
-    virtual void TurnOnHorn() = 0;
-    virtual void TurnOffHorn() = 0;
-    virtual void TurnOnBrakes() = 0;
-    virtual void TurnOffBrakes() = 0;
-    virtual void TurnOnHazard() = 0;
-    virtual void TurnOffHazard() = 0;
-    virtual void TurnOnLeftTurn() = 0;
-    virtual void TurnOnRightTurn() = 0;
-    virtual void TurnOffTurns() = 0;
+    virtual void TurnOnIgnition() const = 0;
+    virtual void LockBike() const = 0;
+    virtual void UnlockBike() const = 0;
+    virtual void TurnOnStarter() const = 0;
+    virtual void TurnOffStarter() const = 0;
+    virtual void TurnOffBike() const = 0;
+    virtual void TurnOnHeadlight() const = 0;
+    virtual void TurnOffHeadlight() const = 0;
+    virtual void TurnOnHighBeam() const = 0;
+    virtual void TurnOffHighBeam() const = 0;
+    virtual void TurnOnMarkers() const = 0;
+    virtual void TurnOffMarkers() const = 0;
+    virtual void TurnOnHorn() const = 0;
+    virtual void TurnOffHorn() const = 0;
+    virtual void TurnOnBrakes() const = 0;
+    virtual void TurnOffBrakes() const = 0;
+    virtual void TurnOnHazard() const = 0;
+    virtual void TurnOffHazard() const = 0;
+    virtual void TurnOnLeftTurn() const = 0;
+    virtual void TurnOnRightTurn() const = 0;
+    virtual void TurnOffTurns() const = 0;
 };
 
 #endif

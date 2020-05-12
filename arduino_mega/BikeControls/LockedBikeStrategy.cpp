@@ -1,83 +1,86 @@
 #include "LockedBikeStrategy.h"
 
-void LockedBikeStrategy::LockBike() override
+void LockedBikeStrategy::LockBike() 
 {
     // Bike is already locked;
     return
 }
-void LockedBikeStrategy::UnlockBike() override
+void LockedBikeStrategy::UnlockBike() 
 {
     xTaskCreate(TaskBlinkAndBeep, "BlinkAndBeeb", 128, NULL, 2, NULL);
 }
-void LockedBikeStrategy::TurnOnStarter() override
+void LockedBikeStrategy::TurnOnStarter() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOffStarter() override
+void LockedBikeStrategy::TurnOffStarter() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOffBike() override
+void LockedBikeStrategy::TurnOffBike() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOnHeadlight() override
+void LockedBikeStrategy::TurnOnIgnition(){
+    alarm();
+}
+void LockedBikeStrategy::TurnOnHeadlight() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOffHeadlight() override
+void LockedBikeStrategy::TurnOffHeadlight() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOnHighBeam() override
+void LockedBikeStrategy::TurnOnHighBeam() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOffHighBeam() override
+void LockedBikeStrategy::TurnOffHighBeam() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOnMarkers() override
+void LockedBikeStrategy::TurnOnMarkers() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOffMarkers() override
+void LockedBikeStrategy::TurnOffMarkers() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOnHorn() override
+void LockedBikeStrategy::TurnOnHorn() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOffHorn() override
+void LockedBikeStrategy::TurnOffHorn() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOnBrakes() override
+void LockedBikeStrategy::TurnOnBrakes() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOffBrakes() override
+void LockedBikeStrategy::TurnOffBrakes() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOnHazard() override
+void LockedBikeStrategy::TurnOnHazard() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOffHazard() override
+void LockedBikeStrategy::TurnOffHazard() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOnLeftTurn() override
+void LockedBikeStrategy::TurnOnLeftTurn() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOnRightTurn() override
+void LockedBikeStrategy::TurnOnRightTurn() 
 {
     alarm();
 }
-void LockedBikeStrategy::TurnOffTurns() override
+void LockedBikeStrategy::TurnOffTurns() 
 {
     alarm();
 }
