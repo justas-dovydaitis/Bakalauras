@@ -1,6 +1,7 @@
 #include <MPU6050_tockn.h>
 #include <Wire.h>
 
+
 MPU6050 mpu6050(Wire);
 
 void setupGyroscope()
@@ -9,6 +10,7 @@ void setupGyroscope()
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);
 }
+
 
 void gyroscopeService(void *pvParams)
 {
@@ -31,7 +33,7 @@ void gyroscopeService(void *pvParams)
 
   vTaskDelete(NULL);
 }
-int gyroCheckInterval = 500;
+int gyroCheckInterval = 500; //500milis;
 int lastCheck = 0;
 void checkGyroscope()
 {

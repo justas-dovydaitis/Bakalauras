@@ -13,7 +13,7 @@ public:
     }
     void LockBike() const override
     {
-        controls->setStrategy(new LockedBikeStrategy);
+        // BIKE_CONTROLS->setStrategy(new LockedBikeStrategy);
     }
     void UnlockBike() const override
     {
@@ -100,7 +100,7 @@ private:
         digitalWrite(GPIO_OUT_MARKER, RELAY_OPEN);
         digitalWrite(GPIO_OUT_HORN, RELAY_OPEN);
 
-        Delay(400 / portTICK_PERIOD_MS);
+        vTaskDelay(400 / portTICK_PERIOD_MS);
 
         digitalWrite(GPIO_OUT_LEFT_TURN, RELAY_CLOSED);
         digitalWrite(GPIO_OUT_RIGHT_TURN, RELAY_CLOSED);

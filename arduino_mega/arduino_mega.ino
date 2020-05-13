@@ -12,11 +12,22 @@
 #include "./BikeControls/RestingBikeStrategy.h"
 #include "./BikeControls/RunningBikeStrategy.h"
 
-
-
+/**
+ * VARIABLES
+ */
+BikeControls *BIKE_CONTROLS;
 float lat, lon;
 TinyGPSPlus gps; // create gps object
 
+/**
+ * FUNCTIONS
+ */
+// GSM
+int sendSMS(String message);
+int makeCall();
+void setupGSM();
+void updateGSM();
+// GPS
 void gpsSetup()
 {
   Serial.println("The GPS Received Signal:");
@@ -54,8 +65,8 @@ void setup()
   Serial1.begin(115200);
   configurePins();
   Serial.println("asdasdasdasd");
-
-  gpsSetup();
+  setupGSM();
+  // gpsSetup();
 
   BIKE_CONTROLS = new BikeControls(new RunningBikeStrategy);
 }
@@ -65,10 +76,8 @@ void loop()
 }
 void serialEvent()
 {
-  String x = Serial.readStringUntil("\n");
-
-  Command command = LOCK;
-  handleBTControls(command);
+  sendSMS("bbd");
+  makeCall();
 }
 void serialEvent1()
 {
@@ -77,4 +86,5 @@ void serialEvent1()
   Command command = (Command)x.toInt();
 
   handleBTControls(command);
+  // controls->TurnOnBrakes();
 }

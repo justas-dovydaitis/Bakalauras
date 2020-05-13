@@ -3,7 +3,7 @@
 
 #include <Arduino_FreeRTOS.h>
 #include "Tasks.h"
-#include "BikeStrategy.h"
+#include "BikeControls.h"
 #include "LockedBikeStrategy.h"
 
 class RunningBikeStrategy : public BikeStrategy
@@ -16,7 +16,7 @@ public:
     }
     void LockBike() const override
     {
-        BIKE_CONTROLS->setStrategy(new LockedBikeStrategy);
+        // BIKE_CONTROLS->setStrategy(new LockedBikeStrategy);
     }
     void UnlockBike() const override
     {

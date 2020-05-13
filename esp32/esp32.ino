@@ -1,31 +1,37 @@
 
 #include <HardwareSerial.h>
+#include "./Command.h"
 
 #include <string.h>
 
-HardwareSerial hSerial(1);
+HardwareSerial arduinoSerial(2);
 
-String valor;
-// BaseType_t gyroscopeServiceTask;
+BaseType_t gyroscopeServiceTask;
 
 void setupGyroscope();
 void checkGyroscope();
+void gyroscopeService();
+
 void setupBT();
 
 void setup()
 {
   Serial.begin(115200);
-  hSerial.begin(115200, SERIAL_8N1, 16, 17);
+  arduinoSerial.begin(115200, SERIAL_8N1, 16, 17);
   Serial.println("Starting BLE work!");
 
   setupBT();
-  // setupGyroscope();
+  setupGyroscope();
+
+
+  // gyroscopeServiceTask = TaskCreate(gyroscopeService, "Gyro", 2048, NULL, 3, NULL);
 }
 
 int intervalMilis = 500;
 
 void loop()
 {
-  // checkGyroscope();
+  checkGyroscope();
+ 
   // put your main code here, to run repeatedly:
 }

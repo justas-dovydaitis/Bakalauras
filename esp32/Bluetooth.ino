@@ -57,10 +57,10 @@ class BTCallbacks : public BLECharacteristicCallbacks
         {
             for (int i = 0; i < value.length(); i++)
             {
-                hSerial.print(value[i]);
+                arduinoSerial.print(value[i]);
                 Serial.print(value[i]);
             }
-            hSerial.println();
+            arduinoSerial.println();
             Serial.println();
         }
     }
@@ -72,9 +72,6 @@ void setupBT()
     BLEDevice::setEncryptionLevel(ESP_BLE_SEC_ENCRYPT);
     BLEDevice::setSecurityCallbacks(new MySecurity());
 
-    /*
-     Required in authentication process to provide displaying and/or input passkey or yes/no butttons confirmation
-  */
     BLEServer *pServer = BLEDevice::createServer();
     BLEService *pService = pServer->createService(SERVICE_UUID);
     BLECharacteristic *pCharacteristic = pService->createCharacteristic(
@@ -90,9 +87,9 @@ void setupBT()
     pAdvertising->start();
 
     BLESecurity *pSecurity = new BLESecurity();
-    esp_ble_auth_req_t auth_req = ESP_LE_AUTH_REQ_SC_MITM_BOND; //bonding with peer device after authentication
-    esp_ble_io_cap_t iocap = ESP_IO_CAP_OUT;                    //set the IO capability to No output No input
-    uint8_t key_size = 16;                                      //the key size should be 7~16 bytes
+    esp_ble_auth_req_t auth_req = ESP_LE_AUTH_REQ_SC_MITM_BOND;
+    esp_ble_io_cap_t iocap = ESP_IO_CAP_OUT;
+    uint8_t key_size = 16;
     uint8_t init_key = ESP_BLE_ENC_KEY_MASK | ESP_BLE_ID_KEY_MASK;
     uint8_t rsp_key = ESP_BLE_ENC_KEY_MASK | ESP_BLE_ID_KEY_MASK;
     //set static passkey

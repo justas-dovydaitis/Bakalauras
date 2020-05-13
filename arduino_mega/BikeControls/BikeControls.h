@@ -3,10 +3,6 @@
 
 #include "BikeStrategy.h"
 
-// #include "LockedBikeStrategy.h"
-// #include "RestingBikeStrategy.h"
-// #include "RunningBikeStrategy.h"
-
 class BikeControls
 {
 private:
@@ -110,5 +106,4 @@ public:
         this->strategy_->TurnOffTurns();
     }
 };
-extern const BikeControls *BIKE_CONTROLS;
 #endif

@@ -1,53 +1,47 @@
-/*
- * SIM800L SMS RELAY v1.0
- * Arduino Hardware (Author): Nano V3 (ATmega328)
- * Arduino IDE (Author): 1.6.9
- * T.K.Hareendran/2018
- */
+// #include <SoftwareSerial1a.h>
 #include <HardwareSerial.h>
-// #include <SoftwareSerial.h>
-// #include <TinyGsmClient.h>
-//      Serial2(16,17);  // (Rx,Tx  > Tx,Rx)
-
-
-
+//Create software Serial1a object to communicate with SIM800L
+// SoftwareSerial1a mySerial1a(3, 1); //SIM800L Tx & Rx is connected to Arduino #3 & #2
+HardwareSerial Serial1a(0);
 void setup()
 {
-    //Begin serial communication with Arduino and Arduino IDE (Serial Monitor)
-    Serial.begin(9600);
+    //Begin Serial1a communication with Arduino and Arduino IDE (Serial1a Monitor)
+    Serial1a.begin(9600);
 
-    //Begin serial communication with Arduino and SIM800L
-    Serial2.begin(9600);
+    //Begin Serial1a communication with Arduino and SIM800L
+    // mySerial1a.begin(9600);
 
-    Serial.println("Initializing...");
+    Serial1a.println("Initializing...");
     delay(1000);
 
-    Serial2.println("AT"); //Once the handshake test is successful, i t will back to OK
-    updateSerial();
-
-    Serial2.println("AT+COPS"); //Once the handshake test is successful, i t will back to OK
-    updateSerial();
-
-    Serial2.println("ATD+37060513161;"); //  change ZZ with country code and xxxxxxxxxxx with phone number to dial
-    updateSerial();
-    delay(20000);           // wait for 20 seconds...
-    Serial2.println("ATH"); //hang up
-    updateSerial();
+    Serial1a.println("AT"); //Once the handshake test is successful, it will back to OK
+    updateSerial1a();
+    Serial1a.println("AT+CSQ"); //Signal quality test, value range is 0-31 , 31 is the best
+    updateSerial1a();
+    Serial1a.println("AT+CCID"); //Read SIM information to confirm whether the SIM is plugged
+    updateSerial1a();
+    Serial1a.println("AT+CREG?"); //Check whether it has registered in the network
+    updateSerial1a();
+    Serial1a.println("ATD+ +37060545482;");
+    delay(20000);          // wait for 20 seconds...
+    Serial1a.println("ATH"); //hang up
+    updateSerial1a();
 }
 
 void loop()
 {
+    updateSerial1a();
 }
 
-void updateSerial()
+void updateSerial1a()
 {
     delay(500);
-    while (Serial.available())
+    while (Serial1a.available())
     {
-        Serial2.write(Serial.read()); //Forward what Serial received to Software Serial Port
+        Serial1a.read(); //Forward what Serial1a received to Software Serial1a Port
     }
-    while (Serial2.available())
-    {
-        Serial.write(Serial2.read()); //Forward what Software Serial received to Serial Port
-    }
+    //   while(mySerial1a.available())
+    //   {
+    //     Serial1a.write(mySerial1a.read());//Forward what Software Serial1a received to Serial1a Port
+    //   }
 }

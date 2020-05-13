@@ -10,7 +10,6 @@ void handleBTControls(int command)
         BIKE_CONTROLS->TurnOnIgnition();
         break;
     case IGNITION_OFF:
-
         BIKE_CONTROLS->TurnOffBike();
         break;
     case STARTER:
