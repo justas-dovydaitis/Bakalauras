@@ -19,7 +19,10 @@ typedef enum
     MARKERS_OFF = 14,
     HORN = 15,
     HORN_OFF = 16,
-    LOCK = 17
+    LOCK = 17,
+    UNLOCK = 18,
+    GET_LOCATION = 19,
+    GET_BIKE_STATE = 20
 } Command;
 
 extern Command cmd;

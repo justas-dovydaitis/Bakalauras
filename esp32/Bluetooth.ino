@@ -10,7 +10,7 @@
 #define ESP_BLE_OOB_DISABLE 0
 esp_ble_sm_param_t ESP_BLE_SM_OOB_SUPPORT = (esp_ble_sm_param_t)10;
 
-class MySecurity : public BLESecurityCallbacks
+class BTSecurity : public BLESecurityCallbacks
 {
 
     bool onConfirmPIN(uint32_t pin)
@@ -70,7 +70,7 @@ void setupBT()
 {
     BLEDevice::init(DEVICE_NAME);
     BLEDevice::setEncryptionLevel(ESP_BLE_SEC_ENCRYPT);
-    BLEDevice::setSecurityCallbacks(new MySecurity());
+    BLEDevice::setSecurityCallbacks(new BTSecurity());
 
     BLEServer *pServer = BLEDevice::createServer();
     BLEService *pService = pServer->createService(SERVICE_UUID);
@@ -79,7 +79,7 @@ void setupBT()
 
     pCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED | ESP_GATT_PERM_WRITE_ENCRYPTED);
     pCharacteristic->setCallbacks(new BTCallbacks());
-    pCharacteristic->setValue("Hello World says Neil");
+    pCharacteristic->setValue("Hello World says your moto brain");
 
     pService->start();
 

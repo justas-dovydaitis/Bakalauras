@@ -5,8 +5,13 @@
 #include <string.h>
 
 HardwareSerial arduinoSerial(2);
-
 BaseType_t gyroscopeServiceTask;
+enum BikeState
+{
+  LOCKED = 0,
+  RESTING = 1,
+  RUNNING = 2
+};
 
 void setupGyroscope();
 void checkGyroscope();
@@ -23,7 +28,6 @@ void setup()
   setupBT();
   setupGyroscope();
 
-
   // gyroscopeServiceTask = TaskCreate(gyroscopeService, "Gyro", 2048, NULL, 3, NULL);
 }
 
@@ -32,6 +36,6 @@ int intervalMilis = 500;
 void loop()
 {
   checkGyroscope();
- 
+
   // put your main code here, to run repeatedly:
 }
